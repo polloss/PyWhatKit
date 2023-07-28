@@ -44,6 +44,41 @@ def sendwhatmsg_instantly(
         core.close_tab(wait_time=close_time)
 
 
+def sendwhatmsg_instantly_as_human(
+        phone_no: str,
+        message: str,
+        wait_time: int = 15,
+        tab_close: bool = False,
+        close_time: int = 3,
+        keystroke_min_ms: int = 70,
+        keystroke_max_ms: int = 400
+) -> None:
+    """Send WhatsApp Message Instantly simulating a Human input"""
+
+    if not core.check_number(number=phone_no):
+        raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
+
+    phone_no = phone_no.replace(" ", "")
+    if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{9,15}", phone_no):
+        raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
+
+    web.open(f"https://web.whatsapp.com/send?phone={phone_no}")
+    time.sleep(4)
+    pg.click(core.WIDTH / 2, core.HEIGHT / 2 + 15)
+    time.sleep(wait_time - 4)
+    core.findtextbox()
+
+    """ Type the message with random wait times to simulate human input"""
+    for c_idx in range(0, len(message)):
+        pyautogui.write(message[c_idx])
+        time.sleep(random.randint(keystroke_min_ms, keystroke_max_ms)/1000)
+
+    pg.press("enter")
+    log.log_message(_time=time.localtime(), receiver=phone_no, message=message)
+    if tab_close:
+        core.close_tab(wait_time=close_time)
+
+
 def sendimg_or_video_immediately(
         phone_no: str,
         path: str,
