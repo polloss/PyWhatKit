@@ -36,25 +36,25 @@ def close_tab(wait_time: int = 2) -> None:
 def findtextbox() -> None:
     """click on text box"""
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile1.png")
+    location = locateOnScreen(f"{dir_path}/data/pywhatkit_smile1.png")
     try:
         moveTo(location[0] + 150, location[1] + 5)
         click()
     except Exception:
-        location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile.png")
+        location = locateOnScreen(f"{dir_path}/data/pywhatkit_smile.png")
         moveTo(location[0] + 150, location[1] + 5)
         click()
 
 
 def find_link():
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    location = locateOnScreen(f"{dir_path}\\data\\link.png")
+    location = locateOnScreen(f"{dir_path}/data/link.png")
     print(location)
     try:
         moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
         click()
     except Exception:
-        location = locateOnScreen(f"{dir_path}\\data\\link2.png")
+        location = locateOnScreen(f"{dir_path}/data/link2.png")
         moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
         print(location)
         click()
@@ -62,7 +62,7 @@ def find_link():
 
 def find_document():
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    location = locateOnScreen(f"{dir_path}\\data\\document.png")
+    location = locateOnScreen(f"{dir_path}/data/document.png")
     print(location)
     moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
     click()
@@ -70,7 +70,7 @@ def find_document():
 
 def find_photo_or_video():
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    location = locateOnScreen(f"{dir_path}\\data\\photo_or_video.png")
+    location = locateOnScreen(f"{dir_path}/data/photo_or_video.png")
     print(location)
     moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
     click()
