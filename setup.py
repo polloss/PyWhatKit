@@ -15,7 +15,7 @@ with open("requirements.txt", "r") as f:
 
 setup(
     name="pywhatkit",
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages() + ['pywhatkit.core.data'],
     version="5.4.1",
     license="MIT",
     description="PyWhatKit is a Simple and Powerful WhatsApp Automation Library with many useful Features",
